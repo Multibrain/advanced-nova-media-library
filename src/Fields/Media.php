@@ -377,7 +377,7 @@ class Media extends Field
     private function makeMediaFromVaporUpload(array $file, HasMedia $model): FileAdder
     {
         $diskName = config('media-library.disk_name');
-        $url = Storage::disk($diskName)->url($file['key']);
+        $url = Storage::disk($diskName)->temporaryUrl($file['key']);
         return $model->addMediaFromUrl($url)
             ->usingFilename($file['file_name']);
     }
